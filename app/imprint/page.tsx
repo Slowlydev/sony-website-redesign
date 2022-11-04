@@ -1,3 +1,3 @@
 export default function Page() {
-  return <div>Imprint page</div>;
+	return <div>Imprint page</div>;
 }

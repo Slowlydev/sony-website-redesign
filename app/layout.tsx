@@ -12,20 +12,20 @@ import { ScreenSizeProvider } from "../lib/context/ScreenSizeProvider";
 const inter = Inter();
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" className={inter.className}>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </head>
-      <body>
-        <ScreenSizeProvider>
-          <Navbar />
-          <main className={styles.main}>
-            {children}
-            <Footer />
-          </main>
-        </ScreenSizeProvider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en" className={inter.className}>
+			<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			</head>
+			<body>
+				<ScreenSizeProvider>
+					<Navbar />
+					<main className={styles.main}>
+						{children}
+						<Footer />
+					</main>
+				</ScreenSizeProvider>
+			</body>
+		</html>
+	);
 }
