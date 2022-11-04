@@ -20,10 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body>
 				<ScreenSizeProvider>
 					<Navbar />
-					<main className={styles.main}>
-						{children}
-						<Footer />
-					</main>
+					<main>{children}</main>
 				</ScreenSizeProvider>
 			</body>
 		</html>
