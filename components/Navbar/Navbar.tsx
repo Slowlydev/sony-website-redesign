@@ -1,19 +1,23 @@
 "use client";
 
-import { motion, LayoutGroup, EventInfo } from "framer-motion";
+import { motion, LayoutGroup, EventInfo, AnimatePresence } from "framer-motion";
+import { useSelectedLayoutSegments } from "next/navigation";
+import { useState } from "react";
+
+import { useScreenSize } from "../../lib/context/ScreenSizeProvider";
+
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { useScreenSize } from "../../lib/context/ScreenSizeProvider";
 
 import styles from "./Navbar.module.scss";
 
 import compassImage from "../../public/assets/compass.svg";
+import closeImage from "../../public/assets/x.svg";
 
 interface Page {
   name: string;
   path: string;
+  segment: string | undefined;
 }
 
 interface Props {
@@ -26,18 +30,22 @@ interface Props {
 const pages: Page[] = [
   {
     name: "Home",
+    segment: undefined,
     path: "/",
   },
   {
     name: "About",
+    segment: "about",
     path: "/about",
   },
   {
     name: "Products",
+    segment: "products",
     path: "/products",
   },
   {
     name: "Images",
+    segment: "images",
     path: "/images",
   },
 ];
@@ -48,27 +56,42 @@ export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <div className={styles.navbar}>
-      <p className={styles.heroText}>Sony</p>
+    <div className={styles.wrapper}>
+      <div className={styles.navbar}>
+        <p className={styles.heroText}>Sony</p>
 
-      {!mobile && (
-        <>
-          <NavOptions />
-          <button></button>
-        </>
-      )}
+        {!mobile && (
+          <>
+            <NavOptions />
+            <button></button>
+          </>
+        )}
 
-      {mobile && <Image src={compassImage} alt="open navigation button" />}
+        {mobile && !open && <Image className={styles.mobileToggle} src={compassImage} alt="open navigation button" onClick={() => setOpen(true)} />}
+        {mobile && open && <Image className={styles.mobileToggle} src={closeImage} alt="close navigation button" onClick={() => setOpen(false)} />}
+      </div>
+
+      <AnimatePresence>
+        {mobile && open && (
+          <motion.div className={styles.mobile} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            {pages.map((page, index) => (
+              <Link key={`nav.mobile.${index}`} href={page.path} onClick={() => setOpen(false)}>
+                {page.name}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
 
 function NavOptions() {
-  const router = useRouter();
+  const [segment] = useSelectedLayoutSegments();
 
   function getCurrentPage() {
     try {
-      return pages.find((page) => page.path === router.asPath)?.name;
+      return pages.find((page) => page.segment === segment)?.name;
     } catch (_) {
       return pages[0].name;
     }
@@ -79,8 +102,9 @@ function NavOptions() {
   return (
     <LayoutGroup>
       <motion.div className={styles.navItemContainer}>
-        {pages.map((page) => (
+        {pages.map((page, index) => (
           <NavItem
+            key={`navItem.${index}`}
             page={page}
             isSelected={selected === page.name}
             onHoverStart={() => setSelected(page.name)}
