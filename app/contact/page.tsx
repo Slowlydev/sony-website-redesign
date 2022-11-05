@@ -3,6 +3,8 @@ import classNames from "classnames";
 import styles from "./ContactPage.module.scss";
 import layoutStyles from "../../styles/layout.module.scss";
 
+import Footer from "../../components/Footer/Footer";
+
 export default function Page() {
 	return (
 		<div className={layoutStyles.main}>
@@ -29,6 +31,8 @@ export default function Page() {
 					<button>Submit</button>
 				</div>
 			</div>
+
+			<Footer />
 		</div>
 	);
 }

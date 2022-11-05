@@ -35,6 +35,7 @@ export default function Page() {
 							className={classNames([styles.image, { [styles.alternate]: !image.portrait }])}
 							src={image.src}
 							alt={`image of ${image.alt}`}
+							placeholder="blur"
 						/>
 					))}
 				</div>
