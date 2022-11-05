@@ -1,12 +1,11 @@
 import { Inter } from "@next/font/google";
 
 import "../styles/globals.scss";
-import styles from "../styles/layout.module.scss";
 
 import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
 
 import { ScreenSizeProvider } from "../lib/context/ScreenSizeProvider";
+import Providers from "../lib/context/Providers";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter();
@@ -20,10 +19,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<title>Sony</title>
 			</head>
 			<body>
-				<ScreenSizeProvider>
+				<Providers>
 					<Navbar />
 					<main>{children}</main>
-				</ScreenSizeProvider>
+				</Providers>
 			</body>
 		</html>
 	);

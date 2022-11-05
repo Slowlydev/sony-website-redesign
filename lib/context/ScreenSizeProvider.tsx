@@ -1,5 +1,3 @@
-"use client";
-
 import { createContext, ReactElement, ReactNode, useContext, useEffect, useState } from "react";
 
 const ScreenSizeContext = createContext<Values>({
