@@ -10,7 +10,7 @@ import { useScreenSize } from "../lib/context/ScreenSizeProvider";
 
 import Footer from "../components/Footer/Footer";
 
-import cam from "../public/products/ILCE-7RM5.png";
+import cam from "../public/products/ilce-7rm5.png";
 
 import bike from "../public/assets/images/bike.jpg";
 import clouds from "../public/assets/images/clouds.jpg";
