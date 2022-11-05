@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import styles from "./HomePage.module.scss";
 
-import cam from "../public/assets/cameras/ILCE-7RM5.png";
+import cam from "../public/assets/cameras/ILCE-7RM5.jpeg";
 
 import bike from "../public/assets/images/bike.jpg";
 import clouds from "../public/assets/images/clouds.jpg";

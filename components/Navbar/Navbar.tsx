@@ -34,11 +34,6 @@ const pages: Page[] = [
 		path: "/",
 	},
 	{
-		name: "About",
-		segment: "about",
-		path: "/about",
-	},
-	{
 		name: "Products",
 		segment: "products",
 		path: "/products",
@@ -47,6 +42,11 @@ const pages: Page[] = [
 		name: "Images",
 		segment: "images",
 		path: "/images",
+	},
+	{
+		name: "Contact",
+		segment: "contact",
+		path: "/contact",
 	},
 ];
 
