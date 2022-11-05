@@ -1,10 +1,14 @@
 @import "../styles/colors.scss";
 
 .page {
-	height: 100vh;
 	width: 100%;
+	height: 100vh;
+	min-height: 70rem;
+
+	overflow: hidden;
 
 	h1 {
+		text-align: center;
 		font-size: 3rem;
 	}
 }
@@ -15,10 +19,6 @@
 	align-items: center;
 	justify-content: center;
 
-	h1 {
-		z-index: 10;
-	}
-
 	.imageContainer {
 		position: absolute;
 
@@ -27,8 +27,11 @@
 		align-items: center;
 		justify-content: center;
 
+		// overflow-x: hidden;
+
 		width: 100%;
-		height: 100%;
+		height: 100vh;
+		min-height: 70rem;
 	}
 
 	.image {
@@ -66,9 +69,24 @@
 		text-align: center;
 	}
 
-	img {
-		scale: 0.8;
-		width: 100%;
-		object-fit: cover;
+	.secondImage {
+		width: 30rem;
+		max-width: 90%;
+		object-fit: contain;
+		margin: -4rem;
+	}
+
+	button {
+		font-size: 1rem;
+
+		padding: 1rem;
+
+		color: #fff;
+
+		cursor: pointer;
+
+		background-color: $action;
+		border-radius: 0.8rem;
+		border: none;
 	}
 }
